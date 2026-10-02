@@ -54,7 +54,7 @@ public class GameController {
 
     @PutMapping("/{id}")
     public ResponseEntity<GameDTO> putGame(
-            @PathVariable Long id,
+            @PathVariable("id") Long id,
             @RequestBody GameDTO gameDTO) {
 
         GameDTO gameDTO1 = gameService.putGame(id, gameDTO);
@@ -63,8 +63,7 @@ public class GameController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteGame(
-            @PathVariable Long id) {
+    public ResponseEntity<Void> deleteGame(@PathVariable("id") Long id) {
 
         gameService.deleteGame(id);
 

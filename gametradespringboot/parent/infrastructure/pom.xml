@@ -19,4 +19,9 @@
     <name>GameTrade Infrastructure</name>
     <description>Infrastructure services for GameTrade</description>
 
+    <modules>
+        <module>eureka</module>
+    </modules>
+
+
 </project>

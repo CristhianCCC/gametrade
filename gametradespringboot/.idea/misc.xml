@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/parent/pom.xml" />
         <option value="$PROJECT_DIR$/parent/services/game/pom.xml" />
         <option value="$PROJECT_DIR$/parent/services/dto-shared/pom.xml" />
+        <option value="$PROJECT_DIR$/parent/infrastructure/eureka/pom.xml" />
       </list>
     </option>
   </component>

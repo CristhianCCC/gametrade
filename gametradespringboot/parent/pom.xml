@@ -22,7 +22,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <spring-boot.version>3.5.3</spring-boot.version>
-    <spring-cloud.version>2025.0.0</spring-cloud.version>
+    <spring-cloud.version>2025.0.3</spring-cloud.version>
   </properties>
 
   <modules>
@@ -33,6 +33,7 @@
   <dependencyManagement>
     <dependencies>
 
+      <!-- Spring Boot -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -41,6 +42,7 @@
         <scope>import</scope>
       </dependency>
 
+      <!-- Spring Cloud -->
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
@@ -56,12 +58,14 @@
     <pluginManagement>
       <plugins>
 
+        <!-- Spring Boot Maven Plugin -->
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring-boot.version}</version>
         </plugin>
 
+        <!-- Maven Compiler -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>

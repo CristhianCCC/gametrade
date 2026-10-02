@@ -6,7 +6,7 @@ public enum Condition {
     LIKE_NEW("2"),
     GOOD("3"),
     ACCEPTABLE("4"),
-    DAMAGED("5");
+    USED("5");
 
     private final String code;
 

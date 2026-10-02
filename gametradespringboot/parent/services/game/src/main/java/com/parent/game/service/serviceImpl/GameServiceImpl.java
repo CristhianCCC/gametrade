@@ -8,7 +8,6 @@ import com.parent.game.service.GameService;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -134,24 +133,40 @@ public class GameServiceImpl implements GameService {
         existingGame.setGenre(gameDTO.getGenre());
         existingGame.setTradingGame(gameDTO.getTradingGame());
 
-        // Actualizar imágenes
+        // Actualizar / agregar imágenes
         if (gameDTO.getImages() != null) {
-
-            List<GameImage> images = new ArrayList<>();
 
             for (GameImageDTO imageDTO : gameDTO.getImages()) {
 
-                GameImage image = new GameImage(
-                        imageDTO.getId(),
-                        imageDTO.getImageUrl(),
-                        imageDTO.getType(),
-                        existingGame
-                );
+                // Si tiene ID, buscamos la imagen existente
+                if (imageDTO.getId() != null) {
 
-                images.add(image);
+                    GameImage existingImage = existingGame.getImages()
+                            .stream()
+                            .filter(image -> image.getId().equals(imageDTO.getId()))
+                            .findFirst()
+                            .orElseThrow(() ->
+                                    new RuntimeException(
+                                            "Image not found with id: " + imageDTO.getId()
+                                    )
+                            );
+
+                    existingImage.setImageUrl(imageDTO.getImageUrl());
+                    existingImage.setType(imageDTO.getType());
+
+                } else {
+
+                    // Si no tiene ID, es una imagen nueva
+                    GameImage newImage = new GameImage(
+                            null,
+                            imageDTO.getImageUrl(),
+                            imageDTO.getType(),
+                            existingGame
+                    );
+
+                    existingGame.getImages().add(newImage);
+                }
             }
-
-            existingGame.setImages(images);
         }
 
         Game updatedGame = gameRepository.save(existingGame);

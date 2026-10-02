@@ -1,6 +1,7 @@
 package com.parent.dto_shared.dto;
-
 import com.parent.dto_shared.enums.ImageType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 public class GameImageDTO {
 
@@ -8,6 +9,7 @@ public class GameImageDTO {
 
     private String imageUrl;
 
+    @Enumerated(EnumType.STRING)
     private ImageType type;
 
     public GameImageDTO() {
