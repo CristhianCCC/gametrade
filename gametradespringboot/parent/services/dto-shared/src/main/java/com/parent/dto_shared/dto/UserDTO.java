@@ -2,7 +2,7 @@ package com.parent.dto_shared.dto;
 
 import com.parent.dto_shared.enums.City;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class UserDTO {
 
@@ -18,7 +18,7 @@ public class UserDTO {
 
     private String phoneNumber;
 
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     private City city;
 
@@ -27,7 +27,7 @@ public class UserDTO {
 
     public UserDTO(Long id, String names, String lastnames, String email,
                    String password, String phoneNumber,
-                   LocalDateTime dateOfBirth, City city) {
+                   LocalDate dateOfBirth, City city) {
 
         this.id = id;
         this.names = names;
@@ -87,11 +87,11 @@ public class UserDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

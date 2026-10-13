@@ -3,7 +3,7 @@ package com.parent.user.entity;
 import com.parent.dto_shared.enums.City;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -23,7 +23,7 @@ public class User {
 
     private String phoneNumber;
 
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Enumerated(EnumType.STRING)
     private City city;
@@ -31,7 +31,7 @@ public class User {
 
     public User () { }
 
-    public User(Long id, String names, String lastnames, String email, String password, String phoneNumber, LocalDateTime dateOfBirth, City city) {
+    public User(Long id, String names, String lastnames, String email, String password, String phoneNumber, LocalDate dateOfBirth, City city) {
         this.id = id;
         this.names = names;
         this.lastnames = lastnames;
@@ -90,11 +90,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

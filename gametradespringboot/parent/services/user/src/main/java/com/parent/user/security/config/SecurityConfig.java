@@ -1,6 +1,7 @@
 package com.parent.user.security.config;
 
 import com.parent.user.security.common.JwtAuthenticationFilter;
+import jakarta.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -41,11 +42,16 @@ public class SecurityConfig {
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
+                        .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "/users"
+                                "/users",
+                                "/users/"
                         ).permitAll()
                         .requestMatchers(
+                                "/error",
+                                "/auth",
                                 "/auth/**"
                         ).permitAll()
                         .anyRequest().authenticated()
